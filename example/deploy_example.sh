@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+cd example
+
 source vars.sh
 
 # Start from a clean slate

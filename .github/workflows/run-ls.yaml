@@ -9,8 +9,8 @@ env:
   AWS_DEFAULT_OUTPUT: json
 
 jobs:
-  deploy-cfn:
-    name: deploy
+  prepare-environment:
+    name: configure-credentials-and-terraform
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub’s OIDC Token endpoint.
     permissions:
@@ -35,6 +35,9 @@ jobs:
           sudo apt update
           sudo apt-get install terraform
           terraform -version
+    - name: Check files
+      run: |
+          ls -larth
 
 
 

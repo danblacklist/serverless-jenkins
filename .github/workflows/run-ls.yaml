@@ -43,6 +43,7 @@ jobs:
           pwd
           ls -larth
           chmod +x example/vars.sh
+          chmod +x example/deploy_example.sh
           ./example/deploy_example.sh
     - name: Check files
       run: |

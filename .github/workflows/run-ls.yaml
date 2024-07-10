@@ -38,6 +38,22 @@ jobs:
     - name: Check files
       run: |
           ls -larth
+  deploy-terraform:
+    name: deploy-terraform
+    runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub’s OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: Install Terraform
+      run: |
+          chmod +x ./example/vars.sh
+          ./example/deploy_example.sh
+    - name: Check files
+      run: |
+          ls -larth
+          cat tf.plan
 
 
 

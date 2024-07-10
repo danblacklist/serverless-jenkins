@@ -1,7 +1,6 @@
 // Jenkins Container Infra (Fargate)
 resource "aws_ecs_cluster" jenkins_controller {
   name               = "${var.name_prefix}-main"
-  capacity_providers = ["FARGATE"]
   tags               = var.tags
   setting {
     name = "containerInsights"
@@ -11,11 +10,34 @@ resource "aws_ecs_cluster" jenkins_controller {
 
 resource "aws_ecs_cluster" jenkins_agents {
   name               = "${var.name_prefix}-spot"
-  capacity_providers = ["FARGATE_SPOT"]
   tags               = var.tags
   setting {
     name = "containerInsights"
     value = "enabled"
+  }
+}
+
+resource "aws_ecs_cluster_capacity_providers" "cluCapProv1" {
+  cluster_name = aws_ecs_cluster.jenkins_controller.name
+
+  capacity_providers = ["FARGATE"]
+
+  default_capacity_provider_strategy {
+    base              = 1
+    weight            = 100
+    capacity_provider = "FARGATE"
+  }
+}
+
+resource "aws_ecs_cluster_capacity_providers" "cluCapProv2" {
+  cluster_name = aws_ecs_cluster.jenkins_agents.name
+
+  capacity_providers = ["FARGATE_SPOT"]
+
+  default_capacity_provider_strategy {
+    base              = 1
+    weight            = 100
+    capacity_provider = "FARGATE_SPOT"
   }
 }
 

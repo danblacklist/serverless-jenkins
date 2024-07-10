@@ -19,6 +19,10 @@ terraform plan \
     -input=false \
     -out=tf.plan
 
+terraform show -json tf.plan
+
+jq
+
 # terraform apply \
 #     -input=false \
 #     -auto-approve=true \

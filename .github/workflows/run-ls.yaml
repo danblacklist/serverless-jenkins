@@ -40,6 +40,7 @@ jobs:
           ls -larth
   deploy-terraform:
     name: deploy-terraform
+    needs: prepare-environment
     runs-on: ubuntu-latest
     # These permissions are needed to interact with GitHub’s OIDC Token endpoint.
     permissions:
@@ -48,6 +49,8 @@ jobs:
     steps:
     - name: Install Terraform
       run: |
+          pwd
+          ls -la ./example/
           chmod +x ./example/vars.sh
           ./example/deploy_example.sh
     - name: Check files

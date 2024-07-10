@@ -17,8 +17,8 @@ terraform plan \
     -input=false \
     -out=tf.plan
 
-terraform apply \
-    -input=false \
-    -auto-approve=true \
-    -lock=true \
-    tf.plan
+# terraform apply \
+#     -input=false \
+#     -auto-approve=true \
+#     -lock=true \
+#     tf.plan

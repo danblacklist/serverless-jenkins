@@ -48,7 +48,7 @@ jobs:
     - name: Check files
       run: |
           ls -larth
-          cat example/tf.plan
+          aws s3 cp example/tf.plan s3://6522116061/
 
 
 

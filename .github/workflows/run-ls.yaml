@@ -48,8 +48,8 @@ jobs:
     - name: Check files
       run: |
           ls -larth
-          aws s3 cp example/tf.plan s3://6522116061/
-
+          terraform show -json example/tf.plan
+          jq
 
 
 

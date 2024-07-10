@@ -45,11 +45,13 @@ jobs:
           chmod +x example/vars.sh
           chmod +x example/deploy_example.sh
           ./example/deploy_example.sh
-    - name: Check files
-      run: |
-          ls -larth
-          terraform show -json example/tf.plan
-          jq
+
+          
+    # - name: Check files
+    #   run: |
+    #       ls -larth
+    #       terraform show -json example/tf.plan
+    #       jq
 
 
 

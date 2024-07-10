@@ -19,9 +19,7 @@ terraform plan \
     -input=false \
     -out=tf.plan
 
-terraform show -json tf.plan
-
-jq
+terraform show -json tf.plan | jq '.resource_changes[] | "\(.address) -> \(.change.actions[])"'
 
 # terraform apply \
 #     -input=false \

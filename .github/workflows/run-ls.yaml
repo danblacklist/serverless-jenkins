@@ -47,11 +47,11 @@ jobs:
       id-token: write
       contents: read
     steps:
-    - name: Install Terraform
+    - name: Run Terraform commands
       run: |
           pwd
-          ls -la ./example/
-          chmod +x ./example/vars.sh
+          ls -larth
+          chmod +x example/vars.sh
           ./example/deploy_example.sh
     - name: Check files
       run: |
